@@ -1,0 +1,66 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main {
+
+    public static int solution(int startIndex, int endIndex) {
+        int answer = 0;
+        
+        int[] arr = new int[46];
+        arr[0] = 0;
+        for (int i = 1; i <= 45; i++) {
+            int temp = 0;
+            for (int j = 1; j <= i; j++) {
+                temp += j;
+            }
+
+            arr[i] = temp;
+        }
+
+        int sumStart = 0;
+        for (int i = 1; i <= 45; i++) {
+            if (startIndex > arr[i]) {
+                for (int j = 0; j < i; j++) {
+                    sumStart += i;
+                }
+            } else if (startIndex <= arr[i]) {
+                for (int j = 0; j < startIndex - arr[i - 1] - 1; j++) {
+                    sumStart += i;
+                }
+
+                break;
+            }
+        }
+
+        int sumEnd = 0;
+        for (int i = 1; i <= 45; i++) {
+            if (endIndex > arr[i]) {
+                for (int j = 0; j < i; j++) {
+                    sumEnd += i;
+                }
+            } else if (endIndex <= arr[i]) {
+                for (int j = 0; j < endIndex - arr[i - 1]; j++) {
+                    sumEnd += i;
+                }
+
+                break;
+            }
+        }
+
+        answer = sumEnd - sumStart;
+        return answer;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer stz = new StringTokenizer(br.readLine());
+        int startIndex = Integer.parseInt(stz.nextToken());
+        int endIndex = Integer.parseInt(stz.nextToken());
+
+        System.out.println(solution(startIndex, endIndex));
+    }
+}
