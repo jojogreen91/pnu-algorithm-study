@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "C:\\Users\\hyeon\\AppData\\Local\\Programs\\Python\\Python310",
+    "python.autoComplete.addBrackets": true,
+    "python.languageServer": "Pylance",
+}
