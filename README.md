@@ -3,6 +3,7 @@
 - jojogreen91
 - qet75564
 - Lee-SiHyeon
+- jiy00nlee
 ## 목표💡
 - 꾸준한 알고리즘 문제 풀기 연습
 ## 진행 방식 🎲
