@@ -2,10 +2,6 @@ import sys
 sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
-3
-8
-10
-16
 
 T = int(input())
 primeArray = [0 for _ in range(10001)]
@@ -17,9 +13,8 @@ for i in range(2,100):
 
 for _ in range(T):
     n = int(input())
-    s = n//2
+    s = n//2 # 가운데부터 시작해서 양쪽으로 갈라지는 방식.
     for i in range(s):
-        
         if primeArray[s-i] ==0 and primeArray[s+i] == 0:
             print(s-i, s+i)
             break
