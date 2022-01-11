@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 	static int N, M, r, c, d;
-
+	static int[][] direction= {{-1, 0}, {0, 1}, {1, 0}, {0, -1}}; 
 	static void clean(int[][] map) {
 		boolean flag = true;
 		int ans = 0;
@@ -17,8 +17,9 @@ public class Main {
 			// *** step 2 - a ***
 			d = (d + 3) % 4; // rotate
 			
-			int[] frontPos = getFront(r, c, d);
-			int[] backPos = getBack(r, c, d);
+			int[] frontPos = {r + direction[d][0], c + direction[d][1]};
+			int[] backPos = {r - direction[d][0], c - direction[d][1]};
+			
 			if (map[frontPos[0]][frontPos[1]] == 0) {
 				flag = true;
 				r = frontPos[0];
@@ -39,51 +40,6 @@ public class Main {
 				return;
 			}
 		}
-	}
-	
-	static int[] getFront(int _x, int _y, int _z) {
-		int[] ret= new int[2];
-		switch(_z) {
-			case 0:
-				ret[0] = _x - 1;
-				ret[1] = _y;
-				break;
-			case 1:
-				ret[0] = _x;
-				ret[1] = _y + 1;
-				break;
-			case 2:
-				ret[0] = _x + 1;
-				ret[1] = _y;
-				break;
-			case 3:
-				ret[0] = _x;
-				ret[1] = _y - 1;
-				break;
-		}
-		return ret;
-	}
-	static int[] getBack(int _x, int _y, int _z) {
-		int[] ret= new int[2];
-		switch(_z) {
-			case 0:
-				ret[0] = _x + 1;
-				ret[1] = _y;
-				break;
-			case 1:
-				ret[0] = _x;
-				ret[1] = _y - 1;
-				break;
-			case 2:
-				ret[0] = _x - 1;
-				ret[1] = _y;
-				break;
-			case 3:
-				ret[0] = _x;
-				ret[1] = _y + 1;
-				break;
-		}
-		return ret;
 	}
 	
 	public static void main(String[] args) {
